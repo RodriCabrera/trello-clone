@@ -2,8 +2,9 @@ const theme = {
 	color: {
 		lightGray: "#ededed",
 		gray: "#ebecf0",
-		background: "#addcff",
+		lightBlue: "#addcff",
 		blue: "#0079bf",
+		background: "#0079bf",
 		transparent: "rgba(0, 0, 0, 0);",
 		transparentLow: "#00000045",
 		transparentMid: "#00000020",

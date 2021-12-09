@@ -2,27 +2,11 @@ import React from "react";
 import { Container } from "./Board.styles";
 import List from "../List";
 import AddList from "../AddList/AddList";
-
-const initialLists = [
-	{
-		id: 1,
-		title: "Backlog",
-		Cards: [],
-	},
-	{
-		id: 2,
-		title: "To-do",
-		Cards: [],
-	},
-	{
-		id: 3,
-		title: "Doing",
-		Cards: [],
-	},
-];
+import { useSelector } from "react-redux";
 
 const Board = () => {
-	const [lists, setLists] = React.useState(initialLists);
+	const lists = useSelector((state) => state.lists);
+	console.log(lists);
 
 	return (
 		<Container>

@@ -28,6 +28,12 @@ export const Input = styled.input`
 		border-radius: ${({ theme }) => theme.borderRadius.rounded};
 		border: 2px solid ${({ theme }) => theme.color.blue};
 	}
+	&::placeholder {
+		color: white;
+	}
+	&:focus::placeholder {
+		color: black;
+	}
 `;
 export const ButtonGroup = styled.div`
 	margin-top: 0.25rem;
