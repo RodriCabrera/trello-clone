@@ -1,17 +1,19 @@
 import styled from "@emotion/styled";
 
+export const Wrapper = styled.div`
+	margin: 12px 4px 12px 4px;
+	width: ${({ theme }) => theme.width.column};
+`;
 export const Content = styled.div`
+	/* display: flex;
+	flex-direction: column; */
 	border-radius: ${({ theme }) => theme.borderRadius.rounded};
 	background-color: ${({ theme }) => theme.color.gray};
-	min-width: ${({ theme }) => theme.width.column};
-	/* margin: 0.25rem;
-	padding: 0.5rem; */
-	height: fit-content;
+	/* margin: 8px; */
+	box-sizing: content-box;
+	width: 100%;
 `;
-export const Wrapper = styled.div`
-	width: ${({ theme }) => theme.width.column};
-	margin: 0 4px;
-`;
+
 export const Header = styled.div`
 	display: flex;
 	align-items: center;
@@ -24,8 +26,12 @@ export const ColumnTitle = styled.h4`
 	font-weight: 600;
 `;
 export const CardList = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
 	padding: 0 4px;
 	margin: 0 4px;
+	overflow-y: scroll;
 `;
 export const Footer = styled.div`
 	padding: 4px 8px;

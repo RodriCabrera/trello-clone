@@ -46,8 +46,7 @@ export const Container = styled.div`
 	backdrop-filter: ${({ theme }) => theme.blur.mid};
 	border-radius: ${({ theme }) => theme.borderRadius.rounded};
 	min-width: ${({ theme }) => theme.width.list};
-	margin: 0.25rem;
-	padding: 0.25rem;
+	margin: 12px 4px 12px 4px;
 	height: fit-content;
 	transition: ${({ theme }) => theme.transition.fast};
 
