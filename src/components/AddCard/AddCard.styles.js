@@ -1,6 +1,8 @@
 import styled from "@emotion/styled/macro";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+	margin-top: 4px;
+`;
 export const ButtonGroup = styled.div`
 	display: none;
 	align-items: center;
@@ -17,12 +19,14 @@ export const TextArea = styled.textarea`
 	color: ${({ theme }) => theme.color.darkGray};
 	padding: 4px 8px;
 	width: 100%;
-	height: 2em;
 	box-sizing: border-box;
 	text-align: start;
 	cursor: pointer;
 	border-radius: ${({ theme }) => theme.borderRadius.rounded};
 	resize: none;
+	&:placeholder-shown {
+		height: 2em;
+	}
 	&:hover {
 		background-color: ${({ theme }) => theme.color.transparentHigh};
 		color: black;

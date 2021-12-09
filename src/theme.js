@@ -31,7 +31,7 @@ const theme = {
 		navExpanded: `clamp(16rem, 20%, 25rem)`,
 		editorSidebar: "23rem",
 	},
-	padding: { card: { body: "6px 8px 2px" }, column: { title: "4px 8px" } },
+	padding: { card: { body: "6px 8px 2px" }, column: { title: "4px 16px" } },
 
 	borderRadius: {
 		rounded: "3px",
