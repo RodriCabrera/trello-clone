@@ -1,15 +1,31 @@
 import React from "react";
-import { Container, TextArea, Button } from "./AddCard.styles";
+import {
+	Button,
+	ButtonGroup,
+	Container,
+	Form,
+	TextArea,
+} from "./AddCard.styles";
 
 const AddCard = () => {
-	const [isActive, setIsActive] = React.useState(false);
+	const [cardTitle, setCardTitle] = React.useState("");
+
+	const handleChange = (e) => {
+		setCardTitle(e.target.value);
+	};
 	return (
 		<Container>
-			{isActive ? (
-				<TextArea></TextArea>
-			) : (
-				<Button onClick={() => setIsActive((s) => !s)}>+ Add a card</Button>
-			)}
+			<Form>
+				<TextArea
+					placeholder="+ Add a card"
+					value={cardTitle}
+					onChange={handleChange}
+				/>
+				<ButtonGroup>
+					<Button>Add card</Button>
+					<span>X</span>
+				</ButtonGroup>
+			</Form>
 		</Container>
 	);
 };
