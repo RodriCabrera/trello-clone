@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "./Board.styles";
-import Header from "../Header";
 import List from "../List";
+import AddList from "../AddList/AddList";
 
 const initialLists = [
 	{
@@ -29,6 +29,7 @@ const Board = () => {
 			{lists.map((l) => (
 				<List key={l.id} title={l.title} />
 			))}
+			<AddList />
 		</Container>
 	);
 };
