@@ -2,12 +2,13 @@ const theme = {
 	color: {
 		lightGray: "#ededed",
 		gray: "#ebecf0",
+		darkGray: "#5e6c84",
 		lightBlue: "#addcff",
 		blue: "#0079bf",
 		background: "#0079bf",
-		transparent: "rgba(0, 0, 0, 0);",
+		transparent: "rgba(0, 0, 0, 0)",
 		transparentLow: "#00000045",
-		transparentMid: "#00000020",
+		transparentMid: "#ffffff3d",
 		transparentHigh: "#00000010",
 
 		text: {
@@ -24,11 +25,12 @@ const theme = {
 	},
 
 	width: {
-		list: "272px",
+		column: "272px",
 		navCollapsed: "5rem",
 		navExpanded: `clamp(16rem, 20%, 25rem)`,
 		editorSidebar: "23rem",
 	},
+	padding: { card: { body: "6px 8px 2px" }, column: { title: "4px 8px" } },
 
 	borderRadius: {
 		rounded: "3px",

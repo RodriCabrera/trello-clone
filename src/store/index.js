@@ -1,4 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import listReducer from "../slices/listSlice";
+import columnsReducer from "../slices/columnsSlice";
 
-export const store = configureStore({ reducer: { lists: listReducer } });
+export const store = configureStore({ reducer: { columns: columnsReducer } });

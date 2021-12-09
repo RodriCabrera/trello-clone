@@ -1,15 +1,21 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addList } from "../../slices/listSlice";
-import { Container, Input, Button, Form, ButtonGroup } from "./AddList.styles";
+import { addColumn } from "../../slices/columnsSlice";
+import {
+	Container,
+	Input,
+	Button,
+	Form,
+	ButtonGroup,
+} from "./AddColumn.styles";
 
 const AddList = () => {
-	const [listTitle, setListTitle] = React.useState("");
+	const [columnTitle, setListTitle] = React.useState("");
 	const dispatch = useDispatch();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		dispatch(addList(listTitle));
+		dispatch(addColumn(columnTitle));
 		setListTitle("");
 	};
 
@@ -20,10 +26,11 @@ const AddList = () => {
 		<Container>
 			<Form onSubmit={handleSubmit}>
 				<Input
-					value={listTitle}
-					name="listTitle"
+					value={columnTitle}
+					name="columnTitle"
 					onChange={handleChange}
 					placeholder="+ Add another list"
+					autoComplete="off"
 				/>
 				<ButtonGroup>
 					<Button type="submit">Add List</Button>

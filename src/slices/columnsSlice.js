@@ -21,11 +21,11 @@ const initialState = [
 	},
 ];
 
-export const listsSlice = createSlice({
-	name: "lists",
+export const columnsSlice = createSlice({
+	name: "columns",
 	initialState,
 	reducers: {
-		addList: (state, action) => [
+		addColumn: (state, action) => [
 			...state,
 			{
 				id: state.length + 1,
@@ -34,12 +34,12 @@ export const listsSlice = createSlice({
 				isActive: true,
 			},
 		],
-		// removeList: (state, payload) => {
+		// removeColumn: (state, payload) => {
 		// 	return state.lists.filter();
 		// },
 	},
 });
 
-export const { addList, removeList } = listsSlice.actions;
+export const { addColumn, removeColumn } = columnsSlice.actions;
 
-export default listsSlice.reducer;
+export default columnsSlice.reducer;

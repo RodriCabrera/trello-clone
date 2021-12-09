@@ -16,9 +16,8 @@ export const Input = styled.input`
 	background-color: ${({ theme }) => theme.color.transparent};
 	border: 2px solid ${({ theme }) => theme.color.transparent};
 	width: 100%;
-	height: 1.75rem;
 	margin: 0;
-	padding: 0;
+	padding: 8px 12px;
 	outline: none;
 	font-size: 1rem;
 	cursor: pointer;
@@ -27,12 +26,13 @@ export const Input = styled.input`
 		outline: none;
 		border-radius: ${({ theme }) => theme.borderRadius.rounded};
 		border: 2px solid ${({ theme }) => theme.color.blue};
+		color: ${({ theme }) => theme.color.text.main};
 	}
 	&::placeholder {
 		color: white;
 	}
 	&:focus::placeholder {
-		color: black;
+		color: ${({ theme }) => theme.color.text.main};
 	}
 `;
 export const ButtonGroup = styled.div`
@@ -42,7 +42,7 @@ export const ButtonGroup = styled.div`
 `;
 
 export const Container = styled.div`
-	background-color: ${fromTheme("color", "transparentHigh")};
+	background-color: ${({ theme }) => theme.color.transparentMid};
 	backdrop-filter: ${({ theme }) => theme.blur.mid};
 	border-radius: ${({ theme }) => theme.borderRadius.rounded};
 	min-width: ${({ theme }) => theme.width.list};

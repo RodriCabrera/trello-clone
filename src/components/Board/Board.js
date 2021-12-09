@@ -1,19 +1,22 @@
 import React from "react";
 import { Container } from "./Board.styles";
-import List from "../List";
-import AddList from "../AddList/AddList";
+import Column from "../Column";
+import AddColumn from "../AddColumn";
 import { useSelector } from "react-redux";
+import Card from "../Card";
 
 const Board = () => {
-	const lists = useSelector((state) => state.lists);
-	console.log(lists);
+	const columns = useSelector((state) => state.columns);
+	console.log(columns);
 
 	return (
 		<Container>
-			{lists.map((l) => (
-				<List key={l.id} title={l.title} />
+			{columns.map((l) => (
+				<Column key={l.id} title={l.title}>
+					<Card></Card>
+				</Column>
 			))}
-			<AddList />
+			<AddColumn />
 		</Container>
 	);
 };
