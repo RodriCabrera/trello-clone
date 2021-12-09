@@ -26,7 +26,8 @@ export const cardsSlice = createSlice({
 			...state,
 			{
 				id: state.length + 1,
-				title: action.payload,
+				title: action.payload.title,
+				inColumn: action.payload.position,
 			},
 		],
 		removeCard: (state, action) => [

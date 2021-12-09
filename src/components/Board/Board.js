@@ -13,12 +13,12 @@ const Board = () => {
 
 	return (
 		<Container>
-			{columns.map((l) => (
-				<Column key={l.id} title={l.title}>
+			{columns.map((col) => (
+				<Column key={col.id} title={col.title} columnId={col.id}>
 					{cards
-						.filter((c) => c.inColumn === l.id)
-						.map((c) => (
-							<Card key={c.id} title={c.title} />
+						.filter((card) => card.inColumn === col.id)
+						.map((card) => (
+							<Card key={card.id} title={card.title} />
 						))}
 				</Column>
 			))}

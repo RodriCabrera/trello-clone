@@ -9,7 +9,7 @@ import {
 	Footer,
 } from "./Column.styles";
 
-const Column = ({ title, children }) => {
+const Column = ({ title, children, columnId }) => {
 	return (
 		<Wrapper>
 			<Content>
@@ -18,7 +18,7 @@ const Column = ({ title, children }) => {
 				</Header>
 				<CardList>{children}</CardList>
 				<Footer>
-					<AddCard />
+					<AddCard position={columnId} />
 				</Footer>
 			</Content>
 		</Wrapper>
