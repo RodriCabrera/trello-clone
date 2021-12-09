@@ -5,7 +5,11 @@ const AddCard = () => {
 	const [isActive, setIsActive] = React.useState(false);
 	return (
 		<Container>
-			{isActive ? <TextArea></TextArea> : <Button>+ Add a card</Button>}
+			{isActive ? (
+				<TextArea></TextArea>
+			) : (
+				<Button onClick={() => setIsActive((s) => !s)}>+ Add a card</Button>
+			)}
 		</Container>
 	);
 };

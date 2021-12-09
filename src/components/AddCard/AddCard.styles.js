@@ -10,7 +10,9 @@ export const Button = styled.button`
 	width: 100%;
 	text-align: start;
 	cursor: pointer;
+	border-radius: ${({ theme }) => theme.borderRadius.rounded};
 	&:hover {
-		filter: brightness(80%);
+		background-color: ${({ theme }) => theme.color.transparentHigh};
+		color: black;
 	}
 `;
