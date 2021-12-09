@@ -34,9 +34,6 @@ export const columnsSlice = createSlice({
 				isActive: true,
 			},
 		],
-		// removeColumn: (state, payload) => {
-		// 	return state.lists.filter();
-		// },
 	},
 });
 

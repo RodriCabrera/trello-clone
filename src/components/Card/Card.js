@@ -1,10 +1,10 @@
 import React from "react";
 import { Container, Title } from "./Card.styles";
 
-const Card = () => {
+const Card = ({ title }) => {
 	return (
 		<Container>
-			<Title>DY-03 / Archivar Listas</Title>
+			<Title>{title}</Title>
 		</Container>
 	);
 };

@@ -7,13 +7,19 @@ import Card from "../Card";
 
 const Board = () => {
 	const columns = useSelector((state) => state.columns);
+	const cards = useSelector((state) => state.cards);
+	console.log("CARDS", cards);
 	console.log(columns);
 
 	return (
 		<Container>
 			{columns.map((l) => (
 				<Column key={l.id} title={l.title}>
-					<Card></Card>
+					{cards
+						.filter((c) => c.inColumn === l.id)
+						.map((c) => (
+							<Card key={c.id} title={c.title} />
+						))}
 				</Column>
 			))}
 			<AddColumn />
