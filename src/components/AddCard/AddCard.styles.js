@@ -55,4 +55,5 @@ export const Button = styled.button`
 `;
 export const Close = styled(BsXLg)`
 	color: ${({ theme }) => theme.color.silver};
+	cursor: pointer;
 `;
