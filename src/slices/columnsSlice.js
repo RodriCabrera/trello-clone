@@ -34,9 +34,21 @@ export const columnsSlice = createSlice({
 				isActive: true,
 			},
 		],
+		archiveColumn: (state, action) => {
+			const targetColumn = state.find((c) => c.id === action.payload);
+			return [
+				...state.filter((c) => c.id !== action.payload),
+				{
+					id: action.payload,
+					title: targetColumn.title,
+					cards: targetColumn.cards,
+					isActive: !targetColumn.isActive,
+				},
+			];
+		},
 	},
 });
 
-export const { addColumn, removeColumn } = columnsSlice.actions;
+export const { addColumn, archiveColumn } = columnsSlice.actions;
 
 export default columnsSlice.reducer;

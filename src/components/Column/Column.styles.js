@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { BsThreeDots } from "react-icons/bs";
+import { BsArchive } from "react-icons/bs";
 
 export const Wrapper = styled.div`
 	margin: 12px 4px 12px 4px;
@@ -38,10 +38,11 @@ export const CardList = styled.div`
 export const Footer = styled.div`
 	padding: 4px 8px;
 `;
-export const Puntos = styled(BsThreeDots)`
+export const Archivar = styled(BsArchive)`
 	padding: 6px;
 	border-radius: ${({ theme }) => theme.borderRadius.rounded};
 	color: ${({ theme }) => theme.color.silver};
+	cursor: pointer;
 	&:hover {
 		background-color: ${({ theme }) => theme.color.transparentHigh};
 	}
