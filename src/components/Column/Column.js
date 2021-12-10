@@ -7,6 +7,7 @@ import {
 	Wrapper,
 	CardList,
 	Footer,
+	Puntos,
 } from "./Column.styles";
 
 const Column = ({ title, children, columnId }) => {
@@ -15,6 +16,7 @@ const Column = ({ title, children, columnId }) => {
 			<Content>
 				<Header>
 					<ColumnTitle>{title}</ColumnTitle>
+					<Puntos />
 				</Header>
 				<CardList>{children}</CardList>
 				<Footer>
