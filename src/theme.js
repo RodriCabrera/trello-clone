@@ -1,8 +1,10 @@
 const theme = {
 	color: {
 		lightGray: "#ededed",
+		lightestGray: "#f4f5f7",
 		gray: "#ebecf0",
 		darkGray: "#5e6c84",
+		silver: "#6b778c",
 		lightBlue: "#addcff",
 		blue: "#0079bf",
 		darkBlue: "#026aa7",
@@ -31,7 +33,7 @@ const theme = {
 		navExpanded: `clamp(16rem, 20%, 25rem)`,
 		editorSidebar: "23rem",
 	},
-	padding: { card: { body: "6px 8px 2px" }, column: { title: "4px 16px" } },
+	padding: { card: { body: "6px 8px 2px" } },
 
 	borderRadius: {
 		rounded: "3px",

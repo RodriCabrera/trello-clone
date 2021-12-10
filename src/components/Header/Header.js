@@ -1,10 +1,13 @@
 import React from "react";
-import { Container, Logo } from "./Header.styles";
-
+import { Container, LogoContainer, LogoText } from "./Header.styles";
+import { FaTrello } from "react-icons/fa";
 const Header = () => {
 	return (
 		<Container>
-			<Logo>TrelloClone</Logo>
+			<LogoContainer>
+				<FaTrello size="1.3rem" style={{ marginLeft: "8px" }} />
+				<LogoText>Trello Clone</LogoText>
+			</LogoContainer>
 		</Container>
 	);
 };

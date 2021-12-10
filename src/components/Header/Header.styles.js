@@ -10,7 +10,12 @@ export const Container = styled.nav`
 	backdrop-filter: blur(4px);
 	/* padding-left: 0.5rem; */
 `;
+export const LogoContainer = styled.div`
+	display: flex;
+	align-items: center;
+`;
 
-export const Logo = styled.h1`
-	margin-left: 1rem;
+export const LogoText = styled.h1`
+	margin-left: 8px;
+	letter-spacing: 1px;
 `;

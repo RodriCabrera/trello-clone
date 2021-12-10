@@ -2,13 +2,13 @@ import React from "react";
 import {
 	Button,
 	ButtonGroup,
+	Close,
 	Container,
 	Form,
 	TextArea,
 } from "./AddCard.styles";
 import { useDispatch } from "react-redux";
 import { addCard } from "../../slices/cardsSlice";
-
 const AddCard = ({ position }) => {
 	const [cardTitle, setCardTitle] = React.useState("");
 	const dispatch = useDispatch();
@@ -16,7 +16,6 @@ const AddCard = ({ position }) => {
 	const handleChange = (e) => {
 		setCardTitle(e.target.value);
 	};
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		dispatch(addCard({ title: cardTitle, position: position }));
@@ -32,7 +31,7 @@ const AddCard = ({ position }) => {
 				/>
 				<ButtonGroup>
 					<Button>Add card</Button>
-					<span>X</span>
+					<Close />
 				</ButtonGroup>
 			</Form>
 		</Container>

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled/macro";
+import { BsXLg } from "react-icons/bs";
 
 export const Container = styled.div`
 	margin-top: 4px;
@@ -35,6 +36,7 @@ export const TextArea = styled.textarea`
 		background-color: white;
 		outline: none;
 		height: 4em;
+		cursor: text;
 	}
 `;
 
@@ -43,11 +45,14 @@ export const Button = styled.button`
 	border: 0;
 	color: white;
 	padding: 6px 12px;
-	margin-right: 4px;
+	margin-right: 8px;
 	text-align: start;
 	cursor: pointer;
 	border-radius: ${({ theme }) => theme.borderRadius.rounded};
 	&:hover {
 		background-color: ${({ theme }) => theme.color.darkBlue};
 	}
+`;
+export const Close = styled(BsXLg)`
+	color: ${({ theme }) => theme.color.silver};
 `;
