@@ -18,7 +18,7 @@ const Board = () => {
 				.map((col) => (
 					<Column key={col.id} title={col.title} columnId={col.id}>
 						{cards
-							.filter((card) => card.inColumn === col.id)
+							.filter((card) => card.inColumn === col.id && card.isActive)
 							.map((card) => (
 								<Card key={card.id} cardId={card.id} title={card.title} />
 							))}
