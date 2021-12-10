@@ -9,6 +9,7 @@ import {
 } from "./AddCard.styles";
 import { useDispatch } from "react-redux";
 import { addCard } from "../../slices/cardsSlice";
+
 const AddCard = ({ position }) => {
 	const [cardTitle, setCardTitle] = React.useState("");
 	const dispatch = useDispatch();

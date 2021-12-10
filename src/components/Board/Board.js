@@ -20,7 +20,7 @@ const Board = () => {
 						{cards
 							.filter((card) => card.inColumn === col.id)
 							.map((card) => (
-								<Card key={card.id} title={card.title} />
+								<Card key={card.id} cardId={card.id} title={card.title} />
 							))}
 					</Column>
 				))}

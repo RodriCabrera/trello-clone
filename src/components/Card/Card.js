@@ -1,22 +1,28 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import Modal from "../Modal";
 import { Container, Title, Archivar } from "./Card.styles";
-
-const Card = ({ title }) => {
+import { archiveCard } from "../../slices/cardsSlice";
+const Card = ({ title, cardId }) => {
 	const [show, setShow] = React.useState(false);
-	const handleClick = () => {
+	const dispatch = useDispatch();
+	const showModal = () => {
 		setShow(true);
 	};
-	const modalClose = () => {
+	const closeModal = () => {
 		setShow(false);
+	};
+	const handleArchive = (e) => {
+		e.stopPropagation();
+		dispatch(archiveCard(cardId));
 	};
 	return (
 		<>
-			<Container onClick={handleClick}>
+			<Container onClick={showModal}>
 				<Title>{title}</Title>
-				<Archivar />
+				<Archivar onClick={handleArchive} />
 			</Container>
-			<Modal title={title} show={show} onClose={modalClose} />
+			<Modal title={title} show={show} onClose={closeModal} />
 		</>
 	);
 };
