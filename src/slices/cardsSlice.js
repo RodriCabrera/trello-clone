@@ -4,18 +4,22 @@ const initialState = [
 	{
 		id: 1,
 		title: "DY-01 / Agregar Listas",
+		description: "Información Sobre DY-01 / Agregar Listas",
 		inColumn: 1,
 		isActive: true,
 	},
 	{
 		id: 2,
 		title: "DY-02 / Implementar Redux store",
+		description:
+			"Texto sobre la implementación del Redux Store. DY-02 / Implementar Redux store.",
 		inColumn: 2,
 		isActive: true,
 	},
 	{
 		id: 3,
 		title: "DY-03 / Agregar Columnas",
+		description: "Columnas. También llamadas listas.",
 		inColumn: 3,
 		isActive: true,
 	},
@@ -30,6 +34,7 @@ export const cardsSlice = createSlice({
 			{
 				id: state.length + 1,
 				title: action.payload.title,
+				description: "",
 				inColumn: action.payload.position,
 				isActive: true,
 			},

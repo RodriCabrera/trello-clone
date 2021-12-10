@@ -1,8 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import Modal from "../Modal";
+import CardModal from "../CardModal";
 import { Container, Title, Archivar } from "./Card.styles";
 import { archiveCard } from "../../slices/cardsSlice";
+
 const Card = ({ title, cardId }) => {
 	const [show, setShow] = React.useState(false);
 	const dispatch = useDispatch();
@@ -22,7 +23,12 @@ const Card = ({ title, cardId }) => {
 				<Title>{title}</Title>
 				<Archivar onClick={handleArchive} />
 			</Container>
-			<Modal title={title} show={show} onClose={closeModal} />
+			<CardModal
+				cardId={cardId}
+				title={title}
+				show={show}
+				onClose={closeModal}
+			/>
 		</>
 	);
 };

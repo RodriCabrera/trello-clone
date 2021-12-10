@@ -22,6 +22,7 @@ export const Container = styled.div`
 `;
 export const Wrapper = styled.div`
 	padding: 16px;
+	height: 100%;
 `;
 export const Header = styled.div`
 	display: flex;
@@ -48,7 +49,15 @@ export const Title = styled.textarea`
 		color: ${({ theme }) => theme.color.text.main};
 	}
 `;
-export const Body = styled.div``;
+export const Body = styled.div`
+	padding: 2px;
+	margin-top: 8px;
+`;
+export const Subtitle = styled.h4`
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 600;
+`;
 export const CloseButton = styled(BsXLg)`
 	position: relative;
 	top: -10px;

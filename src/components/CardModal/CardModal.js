@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
 	Background,
 	Container,
@@ -7,9 +8,17 @@ import {
 	Body,
 	CloseButton,
 	Wrapper,
-} from "./Modal.styles";
+	Subtitle,
+} from "./CardModal.styles";
 
-const Modal = ({ title, show, onClose, children }) => {
+const CardModal = ({ cardId, title, show, onClose, children }) => {
+	const [cardTitle, setCardTitle] = React.useState(title);
+	const description = useSelector(
+		(state) => state.cards.find((c) => c.id === cardId).description
+	);
+	const handleTitleChange = (e) => {
+		setCardTitle(e.target.value);
+	};
 	const escFunction = React.useCallback(
 		(event) => {
 			if (event.keyCode === 27) {
@@ -32,16 +41,21 @@ const Modal = ({ title, show, onClose, children }) => {
 			<Container onClick={(e) => e.stopPropagation()}>
 				<Wrapper>
 					<Header>
-						<Title rows={1}>{title}</Title>
+						<Title rows={1} value={cardTitle} onChange={handleTitleChange} />
 						<CloseButton size="1.2rem" onClick={onClose}>
 							CERRAR
 						</CloseButton>
 					</Header>
-					<Body>{children}</Body>
+					<Body>
+						<Subtitle>Description</Subtitle>
+						<p>
+							{description ? description : "Add a more detailed description"}
+						</p>
+					</Body>
 				</Wrapper>
 			</Container>
 		</Background>
 	);
 };
 
-export default Modal;
+export default CardModal;
