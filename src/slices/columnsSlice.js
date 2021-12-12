@@ -46,9 +46,19 @@ export const columnsSlice = createSlice({
 				},
 			];
 		},
+		editColumnTitle: (state, action) => {
+			return [
+				...state.map((c) =>
+					c.id === action.payload.id
+						? Object.assign({}, c, { title: action.payload.title })
+						: c
+				),
+			];
+		},
 	},
 });
 
-export const { addColumn, archiveColumn } = columnsSlice.actions;
+export const { addColumn, archiveColumn, editColumnTitle } =
+	columnsSlice.actions;
 
 export default columnsSlice.reducer;
