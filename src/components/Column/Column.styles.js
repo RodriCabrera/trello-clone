@@ -33,6 +33,7 @@ export const ColumnTitle = styled.input`
 		outline: none;
 		border-radius: ${({ theme }) => theme.borderRadius.rounded};
 		border: 2px solid ${({ theme }) => theme.color.blue};
+		background: white;
 	}
 `;
 export const CardList = styled.div`
