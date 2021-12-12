@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { editColumnTitle } from "../../slices/columnsSlice";
+import { editColumnTitle } from "../../../slices/columnsSlice";
 import { ColumnTitle } from "./ColumnTitleEdit.styles";
 
 const ColumnTitleEdit = ({ title, columnId }) => {
@@ -8,7 +8,7 @@ const ColumnTitleEdit = ({ title, columnId }) => {
 	const [hasModifications, setHasModifications] = React.useState(false);
 	const dispatch = useDispatch();
 
-	const handleTitleChange = (e) => {
+	const handleChange = (e) => {
 		setHasModifications(true);
 		setNewTitle(e.target.value);
 	};
@@ -17,7 +17,7 @@ const ColumnTitleEdit = ({ title, columnId }) => {
 			e.target.blur();
 		}
 	};
-	const handleTitleBlur = () => {
+	const hangleBlur = () => {
 		if (hasModifications) {
 			dispatch(editColumnTitle({ id: columnId, title: newTitle }));
 			setHasModifications(false);
@@ -30,8 +30,8 @@ const ColumnTitleEdit = ({ title, columnId }) => {
 			value={newTitle}
 			onKeyDown={handleEnter}
 			onClick={(e) => e.target.select()}
-			onBlur={handleTitleBlur}
-			onChange={handleTitleChange}
+			onBlur={hangleBlur}
+			onChange={handleChange}
 		/>
 	);
 };

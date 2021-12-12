@@ -1,25 +1,21 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import ColumnTitleEdit from "../ColumnTitleEdit/ColumnTitleEdit";
 import {
 	Background,
 	Container,
 	Header,
-	Title,
 	Body,
 	CloseButton,
 	Wrapper,
 	Subtitle,
 } from "./CardModal.styles";
+import CardModalTitle from "./CardModalTitle";
 
-const CardModal = ({ cardId, title, show, onClose, children }) => {
-	const [cardTitle, setCardTitle] = React.useState(title);
+const CardModal = ({ cardId, title, show, onClose }) => {
 	const description = useSelector(
 		(state) => state.cards.find((c) => c.id === cardId).description
 	);
-	const handleTitleChange = (e) => {
-		setCardTitle(e.target.value);
-	};
+
 	const escFunction = React.useCallback(
 		(event) => {
 			if (event.keyCode === 27) {
@@ -42,7 +38,7 @@ const CardModal = ({ cardId, title, show, onClose, children }) => {
 			<Container onClick={(e) => e.stopPropagation()}>
 				<Wrapper>
 					<Header>
-						<Title rows={1} value={cardTitle} onChange={handleTitleChange} />
+						<CardModalTitle title={title} cardId={cardId} />
 						<CloseButton size="1.2rem" onClick={onClose}>
 							CERRAR
 						</CloseButton>

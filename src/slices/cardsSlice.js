@@ -51,10 +51,28 @@ export const cardsSlice = createSlice({
 				},
 			];
 		},
-		editCardTitle: (state, action) => {},
+		editCardTitle: (state, action) => {
+			return [
+				...state.map((c) =>
+					c.id === action.payload.id
+						? Object.assign({}, c, { title: action.payload.title })
+						: c
+				),
+			];
+		},
+		editCardDescription: (state, action) => {
+			return [
+				...state.map((c) =>
+					c.id === action.payload.id
+						? Object.assign({}, c, { description: action.payload.description })
+						: c
+				),
+			];
+		},
 	},
 });
 
-export const { addCard, archiveCard, editCardTitle } = cardsSlice.actions;
+export const { addCard, archiveCard, editCardTitle, editCardDescription } =
+	cardsSlice.actions;
 
 export default cardsSlice.reducer;

@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { archiveColumn } from "../../slices/columnsSlice";
 import AddCard from "../AddCard/AddCard";
-import ColumnTitleEdit from "../ColumnTitleEdit/ColumnTitleEdit";
+import ColumnTitleEdit from "./ColumnTitleEdit";
 import {
 	Content,
 	Header,
