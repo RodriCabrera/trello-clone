@@ -1,10 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { archiveColumn, editColumnTitle } from "../../slices/columnsSlice";
+import { archiveColumn } from "../../slices/columnsSlice";
 import AddCard from "../AddCard/AddCard";
+import ColumnTitleEdit from "../ColumnTitleEdit/ColumnTitleEdit";
 import {
 	Content,
-	ColumnTitle,
 	Header,
 	Wrapper,
 	CardList,
@@ -13,34 +13,23 @@ import {
 } from "./Column.styles";
 
 const Column = ({ title, children, columnId }) => {
-	const [newTitle, setNewTitle] = React.useState(title);
-	const [hasModifications, setHasModifications] = React.useState(false);
 	const dispatch = useDispatch();
 	const handleArchive = () => {
 		dispatch(archiveColumn(columnId));
-		console.log("archivar");
 	};
-	const handleTitleChange = (e) => {
-		setHasModifications(true);
-		setNewTitle(e.target.value);
-	};
-	const handleTitleBlur = (e) => {
-		console.log("Title onblur:", e.target.value);
-		if (hasModifications) {
-			dispatch(editColumnTitle({ id: columnId, title: newTitle }));
-			setHasModifications(false);
-		}
-	};
+
 	return (
 		<Wrapper>
 			<Content>
 				<Header>
-					<ColumnTitle
+					<ColumnTitleEdit title={title} columnId={columnId} />
+					{/* <ColumnTitle
+						rows={1}
 						value={newTitle}
 						onClick={(e) => e.target.select()}
 						onBlur={handleTitleBlur}
 						onChange={handleTitleChange}
-					/>
+					/> */}
 					<Archivar onClick={handleArchive} />
 				</Header>
 				<CardList>{children}</CardList>

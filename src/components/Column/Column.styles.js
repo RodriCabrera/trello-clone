@@ -22,20 +22,7 @@ export const Header = styled.div`
 	padding: 0px 8px;
 	height: 40px;
 `;
-export const ColumnTitle = styled.input`
-	color: ${({ theme }) => theme.color.text.main};
-	padding: 4px 8px;
-	font-weight: 600;
-	border: none;
-	background: none;
-	width: 100%;
-	&:focus {
-		outline: none;
-		border-radius: ${({ theme }) => theme.borderRadius.rounded};
-		border: 2px solid ${({ theme }) => theme.color.blue};
-		background: white;
-	}
-`;
+
 export const CardList = styled.div`
 	display: flex;
 	flex-direction: column;
