@@ -11,6 +11,7 @@ import {
 	Footer,
 	Archivar,
 } from "./Column.styles";
+import { useDrop } from "react-dnd";
 
 const Column = ({ title, children, columnId }) => {
 	const dispatch = useDispatch();
@@ -19,9 +20,18 @@ const Column = ({ title, children, columnId }) => {
 		dispatch(archiveColumn(columnId));
 	};
 
+	const [, drop] = useDrop(() => ({
+		accept: "CARD",
+		drop: () => ({ columnId: columnId }),
+		collect: (monitor) => ({
+			isOver: monitor.isOver(),
+			canDrop: monitor.canDrop(),
+		}),
+	}));
+
 	return (
 		<Wrapper>
-			<Content>
+			<Content ref={drop} role="Column">
 				<Header>
 					<ColumnTitleEdit title={title} columnId={columnId} />
 					<Archivar onClick={handleArchive} />

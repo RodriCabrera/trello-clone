@@ -2,12 +2,28 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import CardModal from "../CardModal";
 import { Container, Title, Archivar } from "./Card.styles";
-import { archiveCard } from "../../slices/cardsSlice";
+import { archiveCard, switchCard } from "../../slices/cardsSlice";
+import { useDrag } from "react-dnd";
 
 const Card = ({ title, cardId }) => {
 	const [show, setShow] = React.useState(false);
-
 	const dispatch = useDispatch();
+
+	const [{ isDragging }, drag] = useDrag(() => ({
+		type: "CARD",
+		item: { cardId },
+		end: (item, monitor) => {
+			const dropResult = monitor.getDropResult();
+			if (item && dropResult) {
+				dispatch(switchCard({ cardId, nextCol: dropResult.columnId }));
+			}
+		},
+		collect: (monitor) => ({
+			isDragging: monitor.isDragging(),
+			handlerId: monitor.getHandlerId(),
+		}),
+	}));
+	const opacity = isDragging ? 0 : 1;
 
 	const showModal = () => {
 		setShow(true);
@@ -23,7 +39,7 @@ const Card = ({ title, cardId }) => {
 	};
 
 	return (
-		<div>
+		<div ref={drag} style={{ opacity: opacity }}>
 			<Container onClick={showModal}>
 				<Title>{title}</Title>
 				<Archivar onClick={handleArchive} />

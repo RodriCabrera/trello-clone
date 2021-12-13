@@ -69,10 +69,22 @@ export const cardsSlice = createSlice({
 				),
 			];
 		},
+		switchCard: (state, action) => {
+			const targetCard = state.find((c) => c.id === action.payload.cardId);
+			return [
+				...state.filter((c) => c.id !== targetCard.id),
+				Object.assign({}, targetCard, { inColumn: action.payload.nextCol }),
+			];
+		},
 	},
 });
 
-export const { addCard, archiveCard, editCardTitle, editCardDescription } =
-	cardsSlice.actions;
+export const {
+	addCard,
+	archiveCard,
+	editCardTitle,
+	editCardDescription,
+	switchCard,
+} = cardsSlice.actions;
 
 export default cardsSlice.reducer;
