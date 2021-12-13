@@ -15,7 +15,7 @@ export const Container = styled.div`
 	transition: ${({ theme }) => theme.transition.fast};
 
 	&:hover {
-		background-color: ${({ theme }) => theme.color.transparentMid};
+		background-color: #ffffff4d;
 	}
 	&:focus-within {
 		background-color: ${({ theme }) => theme.color.gray};

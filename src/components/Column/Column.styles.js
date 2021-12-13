@@ -3,9 +3,6 @@ import { BsArchive } from "react-icons/bs";
 
 export const Wrapper = styled.div`
 	margin: 12px 4px 12px 4px;
-	/* box-sizing: border-box; */
-	/* display: inline-block; */
-	/* white-space: nowrap; */
 `;
 export const Content = styled.div`
 	width: ${({ theme }) => theme.width.column};
@@ -33,6 +30,7 @@ export const CardList = styled.div`
 `;
 export const Footer = styled.div`
 	padding: 4px 8px;
+	padding-top: 0;
 `;
 export const Archivar = styled(BsArchive)`
 	padding: 6px;

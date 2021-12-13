@@ -14,6 +14,7 @@ import {
 
 const Column = ({ title, children, columnId }) => {
 	const dispatch = useDispatch();
+
 	const handleArchive = () => {
 		dispatch(archiveColumn(columnId));
 	};
@@ -23,13 +24,6 @@ const Column = ({ title, children, columnId }) => {
 			<Content>
 				<Header>
 					<ColumnTitleEdit title={title} columnId={columnId} />
-					{/* <ColumnTitle
-						rows={1}
-						value={newTitle}
-						onClick={(e) => e.target.select()}
-						onBlur={handleTitleBlur}
-						onChange={handleTitleChange}
-					/> */}
 					<Archivar onClick={handleArchive} />
 				</Header>
 				<CardList>{children}</CardList>
