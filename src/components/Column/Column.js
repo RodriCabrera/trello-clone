@@ -12,6 +12,7 @@ import {
 	Archivar,
 } from "./Column.styles";
 import { useDrop } from "react-dnd";
+import OptionsDrop from "../OptionsDrop/OptionsDrop";
 
 const Column = ({ title, children, columnId }) => {
 	const dispatch = useDispatch();
@@ -34,7 +35,8 @@ const Column = ({ title, children, columnId }) => {
 			<Content ref={drop} role="Column">
 				<Header>
 					<ColumnTitleEdit title={title} columnId={columnId} />
-					<Archivar onClick={handleArchive} />
+					{/* <Archivar onClick={handleArchive} /> */}
+					<OptionsDrop columnId={columnId} />
 				</Header>
 				<CardList>{children}</CardList>
 				<Footer>
