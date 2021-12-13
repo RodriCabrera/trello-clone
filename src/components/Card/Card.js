@@ -6,19 +6,24 @@ import { archiveCard } from "../../slices/cardsSlice";
 
 const Card = ({ title, cardId }) => {
 	const [show, setShow] = React.useState(false);
+
 	const dispatch = useDispatch();
+
 	const showModal = () => {
 		setShow(true);
 	};
+
 	const closeModal = () => {
 		setShow(false);
 	};
+
 	const handleArchive = (e) => {
 		e.stopPropagation();
 		dispatch(archiveCard(cardId));
 	};
+
 	return (
-		<>
+		<div>
 			<Container onClick={showModal}>
 				<Title>{title}</Title>
 				<Archivar onClick={handleArchive} />
@@ -29,7 +34,7 @@ const Card = ({ title, cardId }) => {
 				show={show}
 				onClose={closeModal}
 			/>
-		</>
+		</div>
 	);
 };
 
