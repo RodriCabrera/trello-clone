@@ -10,7 +10,6 @@ import {
 	Header,
 	Close,
 	Background,
-	Archivar,
 } from "./OptionsDrop.styles";
 
 const OptionsDrop = ({ columnId }) => {

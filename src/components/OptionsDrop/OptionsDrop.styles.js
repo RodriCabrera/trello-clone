@@ -1,5 +1,5 @@
 import styled from "@emotion/styled/macro";
-import { BsXLg, BsArchive } from "react-icons/bs";
+import { BsXLg } from "react-icons/bs";
 import { FiMoreHorizontal } from "react-icons/fi";
 
 export const Container = styled.div``;
