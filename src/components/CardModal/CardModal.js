@@ -1,20 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import {
 	Background,
 	Container,
 	Header,
-	Body,
 	CloseButton,
 	Wrapper,
-	Subtitle,
 } from "./CardModal.styles";
+import CardModalDescription from "./CardModalDescription/CardModalDescription";
 import CardModalTitle from "./CardModalTitle";
 
 const CardModal = ({ cardId, title, show, onClose }) => {
-	const description = useSelector(
-		(state) => state.cards.find((c) => c.id === cardId).description
-	);
+	// const description = useSelector(
+	// 	(state) => state.cards.find((c) => c.id === cardId).description
+	// );
 
 	const escFunction = React.useCallback(
 		(event) => {
@@ -43,12 +41,13 @@ const CardModal = ({ cardId, title, show, onClose }) => {
 							CERRAR
 						</CloseButton>
 					</Header>
-					<Body>
+					<CardModalDescription cardId={cardId} />
+					{/* <Body>
 						<Subtitle>Description</Subtitle>
 						<p>
 							{description ? description : "Add a more detailed description"}
 						</p>
-					</Body>
+					</Body> */}
 				</Wrapper>
 			</Container>
 		</Background>

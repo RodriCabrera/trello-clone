@@ -10,17 +10,17 @@ import {
 } from "./AddColumn.styles";
 
 const AddList = () => {
-	const [columnTitle, setListTitle] = React.useState("");
+	const [columnTitle, setColumnTitle] = React.useState("");
 	const dispatch = useDispatch();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		dispatch(addColumn(columnTitle));
-		setListTitle("");
+		setColumnTitle("");
 	};
 
 	const handleChange = (e) => {
-		setListTitle(e.target.value);
+		setColumnTitle(e.target.value);
 	};
 	return (
 		<Container>
@@ -34,7 +34,7 @@ const AddList = () => {
 				/>
 				<ButtonGroup>
 					<Button type="submit">Add List</Button>
-					<span>X</span>
+					<span style={{ cursor: "pointer" }}> X </span>
 				</ButtonGroup>
 			</Form>
 		</Container>
