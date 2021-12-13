@@ -55,10 +55,17 @@ export const columnsSlice = createSlice({
 				),
 			];
 		},
+		duplicateColumn: (state, action) => {
+			const targetColumn = state.find((c) => c.id === action.payload);
+			const newColumn = Object.assign({}, targetColumn, {
+				id: state.length + 1,
+			});
+			return [...state, newColumn];
+		},
 	},
 });
 
-export const { addColumn, archiveColumn, editColumnTitle } =
+export const { addColumn, archiveColumn, editColumnTitle, duplicateColumn } =
 	columnsSlice.actions;
 
 export default columnsSlice.reducer;

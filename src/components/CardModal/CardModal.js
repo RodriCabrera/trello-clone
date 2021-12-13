@@ -6,7 +6,7 @@ import {
 	CloseButton,
 	Wrapper,
 } from "./CardModal.styles";
-import CardModalDescription from "./CardModalDescription/CardModalDescription";
+import CardModalDescription from "./CardModalDescription";
 import CardModalTitle from "./CardModalTitle";
 
 const CardModal = ({ cardId, title, show, onClose }) => {
@@ -32,7 +32,7 @@ const CardModal = ({ cardId, title, show, onClose }) => {
 
 	if (!show) return null;
 	return (
-		<Background dim={!show} onClick={onClose}>
+		<Background onClick={onClose}>
 			<Container onClick={(e) => e.stopPropagation()}>
 				<Wrapper>
 					<Header>

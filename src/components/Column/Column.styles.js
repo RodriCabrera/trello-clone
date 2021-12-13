@@ -32,12 +32,3 @@ export const Footer = styled.div`
 	padding: 4px 8px;
 	padding-top: 0;
 `;
-export const Archivar = styled(BsArchive)`
-	padding: 6px;
-	border-radius: ${({ theme }) => theme.borderRadius.rounded};
-	color: ${({ theme }) => theme.color.silver};
-	cursor: pointer;
-	&:hover {
-		background-color: ${({ theme }) => theme.color.transparentHigh};
-	}
-`;
