@@ -13,7 +13,7 @@ import { addCard } from "../../slices/cardsSlice";
 const AddCard = ({ position }) => {
 	const [cardTitle, setCardTitle] = React.useState("");
 	const dispatch = useDispatch();
-
+	const btnRef = React.useRef(null);
 	const handleChange = (e) => {
 		setCardTitle(e.target.value);
 	};
@@ -21,6 +21,7 @@ const AddCard = ({ position }) => {
 		e.preventDefault();
 		dispatch(addCard({ title: cardTitle, position: position }));
 		setCardTitle("");
+		btnRef.current.blur();
 	};
 	return (
 		<Container>
@@ -29,9 +30,12 @@ const AddCard = ({ position }) => {
 					placeholder="+ Add a card"
 					value={cardTitle}
 					onChange={handleChange}
+					required
 				/>
 				<ButtonGroup>
-					<Button>Add card</Button>
+					<Button ref={btnRef} type="submit">
+						Add card
+					</Button>
 					<Close />
 				</ButtonGroup>
 			</Form>

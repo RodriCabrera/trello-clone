@@ -3,20 +3,24 @@ import { useDispatch } from "react-redux";
 import { addColumn } from "../../slices/columnsSlice";
 import {
 	Container,
+	Wrapper,
 	Input,
 	Button,
 	Form,
 	ButtonGroup,
+	Close,
 } from "./AddColumn.styles";
 
 const AddList = () => {
 	const [columnTitle, setColumnTitle] = React.useState("");
 	const dispatch = useDispatch();
+	const btnRef = React.useRef(null);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		dispatch(addColumn(columnTitle));
 		setColumnTitle("");
+		btnRef.current.blur();
 	};
 
 	const handleChange = (e) => {
@@ -24,19 +28,24 @@ const AddList = () => {
 	};
 	return (
 		<Container>
-			<Form onSubmit={handleSubmit}>
-				<Input
-					value={columnTitle}
-					name="columnTitle"
-					onChange={handleChange}
-					placeholder="+ Add another list"
-					autoComplete="off"
-				/>
-				<ButtonGroup>
-					<Button type="submit">Add List</Button>
-					<span style={{ cursor: "pointer" }}> X </span>
-				</ButtonGroup>
-			</Form>
+			<Wrapper>
+				<Form onSubmit={handleSubmit}>
+					<Input
+						value={columnTitle}
+						name="columnTitle"
+						onChange={handleChange}
+						placeholder="+ Add another list"
+						autoComplete="off"
+						required
+					/>
+					<ButtonGroup>
+						<Button ref={btnRef} type="submit">
+							Add List
+						</Button>
+						<Close />
+					</ButtonGroup>
+				</Form>
+			</Wrapper>
 		</Container>
 	);
 };

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled/macro";
+import { BsXLg } from "react-icons/bs";
 
 export const ButtonGroup = styled.div`
 	margin-top: 0.25rem;
@@ -9,7 +10,8 @@ export const Container = styled.div`
 	background-color: ${({ theme }) => theme.color.transparentMid};
 	backdrop-filter: ${({ theme }) => theme.blur.mid};
 	border-radius: ${({ theme }) => theme.borderRadius.rounded};
-	min-width: ${({ theme }) => theme.width.column};
+	/* min-width: ${({ theme }) => theme.width.column}; */
+	/* width: 100%; */
 	margin: 12px 4px 12px 4px;
 	height: fit-content;
 	transition: ${({ theme }) => theme.transition.fast};
@@ -17,17 +19,20 @@ export const Container = styled.div`
 	&:hover {
 		background-color: #ffffff4d;
 	}
-	&:focus-within {
-		background-color: ${({ theme }) => theme.color.gray};
-	}
 	&:focus-within ${ButtonGroup} {
 		display: flex;
 		align-items: center;
 	}
+	&:focus-within {
+		background-color: ${({ theme }) => theme.color.gray};
+	}
 `;
-
-export const Form = styled.form`
+export const Wrapper = styled.div`
+	/* width: 100%; */
 	padding: 4px;
+	width: ${({ theme }) => theme.width.column};
+`;
+export const Form = styled.form`
 	width: 100%;
 `;
 
@@ -42,11 +47,11 @@ export const Button = styled.button`
 export const Input = styled.input`
 	background-color: ${({ theme }) => theme.color.transparent};
 	border: 0;
-	width: 270px;
+	width: 90%;
 	padding: 8px 12px;
 	outline: none;
 	cursor: pointer;
-	overflow: hidden;
+	/* overflow: hidden; */
 	&:focus {
 		outline: none;
 		border-radius: ${({ theme }) => theme.borderRadius.rounded};
@@ -59,4 +64,8 @@ export const Input = styled.input`
 	&:focus::placeholder {
 		color: ${({ theme }) => theme.color.text.main};
 	}
+`;
+export const Close = styled(BsXLg)`
+	color: ${({ theme }) => theme.color.silver};
+	cursor: pointer;
 `;
