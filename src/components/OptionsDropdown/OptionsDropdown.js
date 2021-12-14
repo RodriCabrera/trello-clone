@@ -10,9 +10,9 @@ import {
 	Header,
 	Close,
 	Background,
-} from "./OptionsDrop.styles";
+} from "./OptionsDropdown.styles";
 
-const OptionsDrop = ({ columnId }) => {
+const OptionsDropdown = ({ columnId }) => {
 	const [showDrop, setShowDrop] = React.useState(false);
 	const dispatch = useDispatch();
 
@@ -44,4 +44,4 @@ const OptionsDrop = ({ columnId }) => {
 	);
 };
 
-export default OptionsDrop;
+export default OptionsDropdown;

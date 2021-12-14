@@ -3,7 +3,7 @@ import AddCard from "../AddCard/AddCard";
 import ColumnTitleEdit from "./ColumnTitleEdit";
 import { Content, Header, Wrapper, CardList, Footer } from "./Column.styles";
 import { useDrop } from "react-dnd";
-import OptionsDrop from "../OptionsDrop/OptionsDrop";
+import OptionsDrop from "../OptionsDropdown/OptionsDropdown";
 
 const Column = ({ title, children, columnId }) => {
 	const [, drop] = useDrop(() => ({
