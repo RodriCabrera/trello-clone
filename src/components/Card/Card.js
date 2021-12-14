@@ -1,9 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import CardModal from "../CardModal";
-import { Container, Title, Archivar } from "./Card.styles";
-import { archiveCard, switchCard } from "../../slices/cardsSlice";
+import { Container, Title, ListItem } from "./Card.styles";
+import {
+	archiveCard,
+	duplicateCard,
+	switchCard,
+} from "../../slices/cardsSlice";
 import { useDrag } from "react-dnd";
+import OptionsDropdown from "../OptionsDropdown";
 
 const Card = ({ title, cardId }) => {
 	const [show, setShow] = React.useState(false);
@@ -38,11 +43,17 @@ const Card = ({ title, cardId }) => {
 		dispatch(archiveCard(cardId));
 	};
 
+	const handleDuplicate = (e) => {
+		dispatch(duplicateCard({}));
+	};
 	return (
 		<div ref={drag} style={{ opacity: opacity }}>
 			<Container onClick={showModal}>
 				<Title>{title}</Title>
-				<Archivar onClick={handleArchive} />
+				<OptionsDropdown title={"Card actions"}>
+					<ListItem onClick={handleDuplicate}>Duplicate Card</ListItem>
+					<ListItem onClick={handleArchive}>Archive card</ListItem>
+				</OptionsDropdown>
 			</Container>
 			<CardModal
 				cardId={cardId}

@@ -1,9 +1,18 @@
 import React from "react";
 import AddCard from "../AddCard/AddCard";
 import ColumnTitleEdit from "./ColumnTitleEdit";
-import { Content, Header, Wrapper, CardList, Footer } from "./Column.styles";
+import {
+	Content,
+	Header,
+	Wrapper,
+	CardList,
+	Footer,
+	ListItem,
+} from "./Column.styles";
 import { useDrop } from "react-dnd";
-import OptionsDrop from "../OptionsDropdown/OptionsDropdown";
+import OptionsDropdown from "../OptionsDropdown";
+import { useDispatch } from "react-redux";
+import { archiveColumn, duplicateColumn } from "../../slices/columnsSlice";
 
 const Column = ({ title, children, columnId }) => {
 	const [, drop] = useDrop(() => ({
@@ -14,14 +23,23 @@ const Column = ({ title, children, columnId }) => {
 			canDrop: monitor.canDrop(),
 		}),
 	}));
+	const dispatch = useDispatch();
 
+	const handleArchive = () => {
+		dispatch(archiveColumn(columnId));
+	};
+	const handleDuplicate = () => {
+		dispatch(duplicateColumn(columnId));
+	};
 	return (
 		<Wrapper>
 			<Content ref={drop} role="Column">
 				<Header>
 					<ColumnTitleEdit title={title} columnId={columnId} />
-					{/* <Archivar onClick={handleArchive} /> */}
-					<OptionsDrop columnId={columnId} />
+					<OptionsDropdown columnId={columnId} title={"List Actions"}>
+						<ListItem onClick={handleDuplicate}>Duplicate list</ListItem>
+						<ListItem onClick={handleArchive}>Archive this list</ListItem>
+					</OptionsDropdown>
 				</Header>
 				<CardList>{children}</CardList>
 				<Footer>

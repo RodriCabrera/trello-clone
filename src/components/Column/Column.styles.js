@@ -31,3 +31,10 @@ export const Footer = styled.div`
 	padding: 4px 8px;
 	padding-top: 0;
 `;
+export const ListItem = styled.li`
+	padding: 6px 12px;
+	cursor: pointer;
+	&:hover {
+		background: #091e420a;
+	}
+`;

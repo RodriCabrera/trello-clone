@@ -85,6 +85,7 @@ export const {
 	editCardTitle,
 	editCardDescription,
 	switchCard,
+	duplicateCard,
 } = cardsSlice.actions;
 
 export default cardsSlice.reducer;
