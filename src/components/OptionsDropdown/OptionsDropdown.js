@@ -9,9 +9,7 @@ import {
 	Background,
 } from "./OptionsDropdown.styles";
 
-const OptionsDropdown = ({ title, children }) => {
-	const [showDrop, setShowDrop] = React.useState(false);
-
+const OptionsDropdown = ({ title, children, showDrop, setShowDrop }) => {
 	const handleClose = (e) => {
 		e.stopPropagation();
 		setShowDrop((s) => !s);

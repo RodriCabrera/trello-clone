@@ -15,6 +15,8 @@ import { useDispatch } from "react-redux";
 import { archiveColumn, duplicateColumn } from "../../slices/columnsSlice";
 
 const Column = ({ title, children, columnId }) => {
+	const [showDrop, setShowDrop] = React.useState(false);
+
 	const [, drop] = useDrop(() => ({
 		accept: "CARD",
 		drop: () => ({ columnId: columnId }),
@@ -30,13 +32,18 @@ const Column = ({ title, children, columnId }) => {
 	};
 	const handleDuplicate = () => {
 		dispatch(duplicateColumn(columnId));
+		setShowDrop(false);
 	};
 	return (
 		<Wrapper>
 			<Content ref={drop} role="Column">
 				<Header>
 					<ColumnTitleEdit title={title} columnId={columnId} />
-					<OptionsDropdown columnId={columnId} title={"List Actions"}>
+					<OptionsDropdown
+						title={"List Actions"}
+						showDrop={showDrop}
+						setShowDrop={setShowDrop}
+					>
 						<ListItem onClick={handleDuplicate}>Duplicate list</ListItem>
 						<ListItem onClick={handleArchive}>Archive this list</ListItem>
 					</OptionsDropdown>

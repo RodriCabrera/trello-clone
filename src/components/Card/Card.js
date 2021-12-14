@@ -11,7 +11,9 @@ import { useDrag } from "react-dnd";
 import OptionsDropdown from "../OptionsDropdown";
 
 const Card = ({ title, cardId }) => {
-	const [show, setShow] = React.useState(false);
+	const [showModal, setShowModal] = React.useState(false);
+	const [showDrop, setShowDrop] = React.useState(false);
+
 	const dispatch = useDispatch();
 
 	const [{ isDragging }, drag] = useDrag(() => ({
@@ -30,12 +32,12 @@ const Card = ({ title, cardId }) => {
 	}));
 	const opacity = isDragging ? 0 : 1;
 
-	const showModal = () => {
-		setShow(true);
+	const openModal = () => {
+		setShowModal(true);
 	};
 
 	const closeModal = () => {
-		setShow(false);
+		setShowModal(false);
 	};
 
 	const handleArchive = (e) => {
@@ -44,13 +46,19 @@ const Card = ({ title, cardId }) => {
 	};
 
 	const handleDuplicate = (e) => {
-		dispatch(duplicateCard({}));
+		e.stopPropagation();
+		setShowDrop(false);
+		dispatch(duplicateCard({ cardId }));
 	};
 	return (
 		<div ref={drag} style={{ opacity: opacity }}>
-			<Container onClick={showModal}>
+			<Container onClick={openModal}>
 				<Title>{title}</Title>
-				<OptionsDropdown title={"Card actions"}>
+				<OptionsDropdown
+					title={"Card actions"}
+					showDrop={showDrop}
+					setShowDrop={setShowDrop}
+				>
 					<ListItem onClick={handleDuplicate}>Duplicate Card</ListItem>
 					<ListItem onClick={handleArchive}>Archive card</ListItem>
 				</OptionsDropdown>
@@ -58,7 +66,7 @@ const Card = ({ title, cardId }) => {
 			<CardModal
 				cardId={cardId}
 				title={title}
-				show={show}
+				show={showModal}
 				onClose={closeModal}
 			/>
 		</div>

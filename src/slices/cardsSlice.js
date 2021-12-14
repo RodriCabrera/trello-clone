@@ -76,6 +76,13 @@ export const cardsSlice = createSlice({
 				Object.assign({}, targetCard, { inColumn: action.payload.nextCol }),
 			];
 		},
+		duplicateCard: (state, action) => {
+			const targetCard = state.find((c) => c.id === action.payload.cardId);
+			return [
+				...state,
+				Object.assign({}, targetCard, { id: state.length + 1 }),
+			];
+		},
 	},
 });
 
