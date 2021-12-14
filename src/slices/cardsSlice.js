@@ -69,11 +69,20 @@ export const cardsSlice = createSlice({
 				),
 			];
 		},
+		// En proceso: para cambiar card entre columnas.
 		switchCard: (state, action) => {
 			const targetCard = state.find((c) => c.id === action.payload.cardId);
 			return [
 				...state.filter((c) => c.id !== targetCard.id),
 				Object.assign({}, targetCard, { inColumn: action.payload.nextCol }),
+			];
+		},
+		duplicateCard: (state, action) => {
+			return [
+				...state,
+				Object.assign({}, state[action.payload.cardId], {
+					id: state.length + 1,
+				}),
 			];
 		},
 	},
