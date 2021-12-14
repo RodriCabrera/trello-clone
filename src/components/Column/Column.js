@@ -17,7 +17,7 @@ import { archiveColumn, duplicateColumn } from "../../slices/columnsSlice";
 const Column = ({ title, children, columnId }) => {
 	const [showDrop, setShowDrop] = React.useState(false);
 
-	const [, drop] = useDrop(() => ({
+	const [{ isOver }, drop] = useDrop(() => ({
 		accept: "CARD",
 		drop: () => ({ columnId: columnId }),
 		collect: (monitor) => ({
@@ -36,7 +36,11 @@ const Column = ({ title, children, columnId }) => {
 	};
 	return (
 		<Wrapper>
-			<Content ref={drop} role="Column">
+			<Content
+				ref={drop}
+				role="Column"
+				style={{ backgroundColor: isOver ? "lightgray" : "" }}
+			>
 				<Header>
 					<ColumnTitleEdit title={title} columnId={columnId} />
 					<OptionsDropdown
