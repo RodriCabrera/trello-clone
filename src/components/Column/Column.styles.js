@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { BsArchive } from "react-icons/bs";
 
 export const Wrapper = styled.div`
 	margin: 12px 4px 12px 4px;

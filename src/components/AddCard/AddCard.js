@@ -9,12 +9,10 @@ import {
 } from "./AddCard.styles";
 import { useDispatch } from "react-redux";
 import { createCard } from "../../slices/cardsSlice";
-import { addCardToCol } from "../../slices/columnsSlice";
 
 const AddCard = ({ columnId }) => {
 	const [cardTitle, setCardTitle] = React.useState("");
 	const dispatch = useDispatch();
-
 	const handleChange = (e) => {
 		setCardTitle(e.target.value);
 	};

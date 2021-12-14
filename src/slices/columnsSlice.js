@@ -62,18 +62,10 @@ export const columnsSlice = createSlice({
 			});
 			return [...state, newColumn];
 		},
-		addCardToCol: (state, action) => {
-			return [...state];
-		},
 	},
 });
 
-export const {
-	addColumn,
-	archiveColumn,
-	editColumnTitle,
-	duplicateColumn,
-	addCardToCol,
-} = columnsSlice.actions;
+export const { addColumn, archiveColumn, editColumnTitle, duplicateColumn } =
+	columnsSlice.actions;
 
 export default columnsSlice.reducer;
