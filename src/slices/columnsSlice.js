@@ -4,19 +4,19 @@ const initialState = [
 	{
 		id: 1,
 		title: "Backlog",
-		Cards: [],
+		cards: [1],
 		isActive: true,
 	},
 	{
 		id: 2,
 		title: "To-do",
-		Cards: [],
+		cards: [2],
 		isActive: true,
 	},
 	{
 		id: 3,
 		title: "Doing",
-		Cards: [],
+		cards: [3],
 		isActive: true,
 	},
 ];
@@ -62,10 +62,18 @@ export const columnsSlice = createSlice({
 			});
 			return [...state, newColumn];
 		},
+		addCardToCol: (state, action) => {
+			return [...state];
+		},
 	},
 });
 
-export const { addColumn, archiveColumn, editColumnTitle, duplicateColumn } =
-	columnsSlice.actions;
+export const {
+	addColumn,
+	archiveColumn,
+	editColumnTitle,
+	duplicateColumn,
+	addCardToCol,
+} = columnsSlice.actions;
 
 export default columnsSlice.reducer;

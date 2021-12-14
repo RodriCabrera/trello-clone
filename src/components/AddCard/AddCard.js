@@ -8,9 +8,10 @@ import {
 	TextArea,
 } from "./AddCard.styles";
 import { useDispatch } from "react-redux";
-import { addCard } from "../../slices/cardsSlice";
+import { createCard } from "../../slices/cardsSlice";
+import { addCardToCol } from "../../slices/columnsSlice";
 
-const AddCard = ({ position }) => {
+const AddCard = ({ columnId }) => {
 	const [cardTitle, setCardTitle] = React.useState("");
 	const dispatch = useDispatch();
 
@@ -19,7 +20,7 @@ const AddCard = ({ position }) => {
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		dispatch(addCard({ title: cardTitle, position: position }));
+		dispatch(createCard({ title: cardTitle, columnId: columnId }));
 		setCardTitle("");
 	};
 	return (

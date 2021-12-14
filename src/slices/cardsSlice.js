@@ -29,13 +29,13 @@ export const cardsSlice = createSlice({
 	name: "cards",
 	initialState,
 	reducers: {
-		addCard: (state, action) => [
+		createCard: (state, action) => [
 			...state,
 			{
 				id: state.length + 1,
 				title: action.payload.title,
 				description: "",
-				inColumn: action.payload.position,
+				inColumn: action.payload.columnId,
 				isActive: true,
 			},
 		],
@@ -51,24 +51,20 @@ export const cardsSlice = createSlice({
 				},
 			];
 		},
-		editCardTitle: (state, action) => {
-			return [
-				...state.map((c) =>
-					c.id === action.payload.id
-						? Object.assign({}, c, { title: action.payload.title })
-						: c
-				),
-			];
-		},
-		editCardDescription: (state, action) => {
-			return [
-				...state.map((c) =>
-					c.id === action.payload.id
-						? Object.assign({}, c, { description: action.payload.description })
-						: c
-				),
-			];
-		},
+		editCardTitle: (state, action) => [
+			...state.map((c) =>
+				c.id === action.payload.id
+					? Object.assign({}, c, { title: action.payload.title })
+					: c
+			),
+		],
+		editCardDescription: (state, action) => [
+			...state.map((c) =>
+				c.id === action.payload.id
+					? Object.assign({}, c, { description: action.payload.description })
+					: c
+			),
+		],
 		switchCard: (state, action) => {
 			const targetCard = state.find((c) => c.id === action.payload.cardId);
 			return [
@@ -80,7 +76,7 @@ export const cardsSlice = createSlice({
 });
 
 export const {
-	addCard,
+	createCard,
 	archiveCard,
 	editCardTitle,
 	editCardDescription,

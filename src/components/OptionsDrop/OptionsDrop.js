@@ -22,9 +22,11 @@ const OptionsDrop = ({ columnId }) => {
 	};
 	const handleArchive = () => {
 		dispatch(archiveColumn(columnId));
+		setShowDrop(false);
 	};
 	const handleDuplicate = () => {
 		dispatch(duplicateColumn(columnId));
+		setShowDrop(false);
 	};
 	return (
 		<Container>

@@ -1,26 +1,11 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { archiveColumn } from "../../slices/columnsSlice";
-import AddCard from "../AddCard/AddCard";
+import AddCard from "../AddCard";
 import ColumnTitleEdit from "./ColumnTitleEdit";
-import {
-	Content,
-	Header,
-	Wrapper,
-	CardList,
-	Footer,
-	Archivar,
-} from "./Column.styles";
+import { Content, Header, Wrapper, CardList, Footer } from "./Column.styles";
 import { useDrop } from "react-dnd";
 import OptionsDrop from "../OptionsDrop/OptionsDrop";
 
 const Column = ({ title, children, columnId }) => {
-	const dispatch = useDispatch();
-
-	const handleArchive = () => {
-		dispatch(archiveColumn(columnId));
-	};
-
 	const [, drop] = useDrop(() => ({
 		accept: "CARD",
 		drop: () => ({ columnId: columnId }),
@@ -35,12 +20,11 @@ const Column = ({ title, children, columnId }) => {
 			<Content ref={drop} role="Column">
 				<Header>
 					<ColumnTitleEdit title={title} columnId={columnId} />
-					{/* <Archivar onClick={handleArchive} /> */}
 					<OptionsDrop columnId={columnId} />
 				</Header>
 				<CardList>{children}</CardList>
 				<Footer>
-					<AddCard position={columnId} />
+					<AddCard columnId={columnId} />
 				</Footer>
 			</Content>
 		</Wrapper>
