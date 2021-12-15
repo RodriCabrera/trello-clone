@@ -38,3 +38,14 @@ export const ListItem = styled.li`
 		background: #091e420a;
 	}
 `;
+export const CardPlaceholder = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 35px;
+	background-color: ${({ theme }) => theme.color.transparentMid};
+	padding: ${({ theme }) => theme.padding.card.body};
+	border-radius: ${({ theme }) => theme.borderRadius.rounded};
+	word-wrap: break-word;
+	cursor: pointer;
+`;

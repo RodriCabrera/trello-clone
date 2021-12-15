@@ -30,7 +30,7 @@ const Card = ({ title, cardId }) => {
 			handlerId: monitor.getHandlerId(),
 		}),
 	}));
-	const opacity = isDragging ? 0 : 1;
+	const opacity = isDragging ? 0.2 : 1;
 
 	const openModal = () => {
 		setShowModal(true);

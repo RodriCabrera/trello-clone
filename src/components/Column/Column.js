@@ -8,6 +8,7 @@ import {
 	CardList,
 	Footer,
 	ListItem,
+	CardPlaceholder,
 } from "./Column.styles";
 import { useDrop } from "react-dnd";
 import OptionsDropdown from "../OptionsDropdown";
@@ -19,10 +20,9 @@ const Column = ({ title, children, columnId }) => {
 
 	const [{ isOver }, drop] = useDrop(() => ({
 		accept: "CARD",
-		drop: () => ({ columnId: columnId }),
+		drop: () => ({ columnId }),
 		collect: (monitor) => ({
-			isOver: monitor.isOver(),
-			canDrop: monitor.canDrop(),
+			isOver: monitor.isOver(), // boolean
 		}),
 	}));
 	const dispatch = useDispatch();
@@ -52,7 +52,10 @@ const Column = ({ title, children, columnId }) => {
 						<ListItem onClick={handleArchive}>Archive this list</ListItem>
 					</OptionsDropdown>
 				</Header>
-				<CardList>{children}</CardList>
+				<CardList>
+					{children}
+					{isOver && <CardPlaceholder />}
+				</CardList>
 				<Footer>
 					<AddCard position={columnId} />
 				</Footer>
