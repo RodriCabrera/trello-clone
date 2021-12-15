@@ -43,7 +43,7 @@ export const CardPlaceholder = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	height: 35px;
-	background-color: ${({ theme }) => theme.color.transparentMid};
+	background-color: #091e420a;
 	padding: ${({ theme }) => theme.padding.card.body};
 	border-radius: ${({ theme }) => theme.borderRadius.rounded};
 	word-wrap: break-word;

@@ -4,19 +4,19 @@ const initialState = [
 	{
 		id: 1,
 		title: "Backlog",
-		Cards: [],
+		cards: [],
 		isActive: true,
 	},
 	{
 		id: 2,
 		title: "To-do",
-		Cards: [],
+		cards: [],
 		isActive: true,
 	},
 	{
 		id: 3,
 		title: "Doing",
-		Cards: [],
+		cards: [],
 		isActive: true,
 	},
 ];

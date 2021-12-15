@@ -12,19 +12,24 @@ import {
 } from "./Column.styles";
 import { useDrop } from "react-dnd";
 import OptionsDropdown from "../OptionsDropdown";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { archiveColumn, duplicateColumn } from "../../slices/columnsSlice";
 
 const Column = ({ title, children, columnId }) => {
 	const [showDrop, setShowDrop] = React.useState(false);
 
-	const [{ isOver }, drop] = useDrop(() => ({
+	const [{ isOver, getItem }, drop] = useDrop(() => ({
 		accept: "CARD",
 		drop: () => ({ columnId }),
 		collect: (monitor) => ({
 			isOver: monitor.isOver(), // boolean
+			getItem: monitor.getItem(), // { cardId: number }
 		}),
 	}));
+	const cards = useSelector((state) => state.cards); // [{card}]
+	const dragginCard = cards.find((c) => c.id === getItem?.cardId); // {card} aparece al dragear.
+	const isCardInCol = () => dragginCard?.inColumn === columnId; // boolean
+
 	const dispatch = useDispatch();
 
 	const handleArchive = () => {
@@ -36,11 +41,7 @@ const Column = ({ title, children, columnId }) => {
 	};
 	return (
 		<Wrapper>
-			<Content
-				ref={drop}
-				role="Column"
-				style={{ backgroundColor: isOver ? "lightgray" : "" }}
-			>
+			<Content ref={drop} role="Column">
 				<Header>
 					<ColumnTitleEdit title={title} columnId={columnId} />
 					<OptionsDropdown
@@ -54,7 +55,7 @@ const Column = ({ title, children, columnId }) => {
 				</Header>
 				<CardList>
 					{children}
-					{isOver && <CardPlaceholder />}
+					{isOver && !isCardInCol() && <CardPlaceholder />}
 				</CardList>
 				<Footer>
 					<AddCard position={columnId} />
