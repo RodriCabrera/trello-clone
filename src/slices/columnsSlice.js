@@ -4,19 +4,35 @@ const initialState = [
 	{
 		id: 1,
 		title: "Backlog",
-		cards: [],
+		cards: [{
+			id: 1,
+			title: "DY-01 / Agregar Listas",
+			description: "Información Sobre DY-01 / Agregar Listas",
+			isActive: true,
+		}],
 		isActive: true,
 	},
 	{
 		id: 2,
 		title: "To-do",
-		cards: [],
+		cards: [{
+			id: 2,
+			title: "DY-02 / Implementar Redux store",
+			description:
+				"Texto sobre la implementación del Redux Store. DY-02 / Implementar Redux store.",
+			isActive: true,
+		}],
 		isActive: true,
 	},
 	{
 		id: 3,
 		title: "Doing",
-		cards: [],
+		cards: [{
+			id: 3,
+			title: "DY-03 / Agregar Columnas",
+			description: "Columnas. También llamadas listas.",
+			isActive: true,
+		}],
 		isActive: true,
 	},
 ];
