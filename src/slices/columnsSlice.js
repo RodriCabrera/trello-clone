@@ -7,7 +7,7 @@ const initialState = [
     title: "Backlog",
     cards: [
       {
-        id: 1,
+        id: uuid(),
         title: "DY-01 / Agregar Listas",
         description: "Información Sobre DY-01 / Agregar Listas",
         isActive: true,
@@ -105,6 +105,16 @@ export const columnsSlice = createSlice({
       );
       const cardIndex = targetColumn.cards.indexOf(targetCard);
       state[columnIndex].cards[cardIndex].isActive = false;
+    },
+    duplicateCard: (state, action) => {
+      const targetColumn = state.find((c) => c.id === action.payload.columnId);
+      const columnIndex = state.indexOf(targetColumn);
+      const targetCard = state[columnIndex].cards.find(
+        (card) => card.id === action.payload.cardId
+      );
+      const newCard = { ...targetCard };
+      newCard.id = uuid();
+      state[columnIndex].cards.push(newCard);
     },
   },
 });
