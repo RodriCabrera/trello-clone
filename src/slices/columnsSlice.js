@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import uuid from 'react-uuid'
+import uuid from "react-uuid";
 
 const initialState = [
   {
@@ -97,7 +97,15 @@ export const columnsSlice = createSlice({
         isActive: true,
       });
     },
-    archiveCard: (state, action) => {},
+    archiveCard: (state, action) => {
+      const targetColumn = state.find((c) => c.id === action.payload.columnId);
+      const columnIndex = state.indexOf(targetColumn);
+      const targetCard = state[columnIndex].cards.find(
+        (card) => card.id === action.payload.cardId
+      );
+      const cardIndex = targetColumn.cards.indexOf(targetCard);
+      state[columnIndex].cards[cardIndex].isActive = false;
+    },
   },
 });
 
@@ -108,6 +116,8 @@ export const {
   duplicateColumn,
   addCard,
   archiveCard,
+  duplicateCard,
+  switchCard,
 } = columnsSlice.actions;
 
 export default columnsSlice.reducer;
