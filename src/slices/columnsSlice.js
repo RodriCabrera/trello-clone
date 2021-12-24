@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import uuid from 'react-uuid'
 
 const initialState = [
   {
@@ -90,12 +91,13 @@ export const columnsSlice = createSlice({
       const targetColumn = state.find((c) => c.id === action.payload.columnId);
       const index = state.indexOf(targetColumn);
       state[index].cards.push({
-        id: 4,
+        id: uuid(),
         title: action.payload.cardTitle,
         description: "",
         isActive: true,
       });
     },
+    archiveCard: (state, action) => {},
   },
 });
 
@@ -105,6 +107,7 @@ export const {
   editColumnTitle,
   duplicateColumn,
   addCard,
+  archiveCard,
 } = columnsSlice.actions;
 
 export default columnsSlice.reducer;
