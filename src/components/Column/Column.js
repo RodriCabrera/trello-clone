@@ -58,7 +58,7 @@ const Column = ({ title, children, columnId }) => {
 					{isOver && !isCardInCol() && <CardPlaceholder />}
 				</CardList>
 				<Footer>
-					<AddCard position={columnId} />
+					<AddCard columnId={columnId} />
 				</Footer>
 			</Content>
 		</Wrapper>
