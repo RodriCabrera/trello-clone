@@ -116,6 +116,41 @@ export const columnsSlice = createSlice({
       newCard.id = uuid();
       state[columnIndex].cards.push(newCard);
     },
+    switchCard: (state, action) => {
+      const targetColumn = state.find(
+        (c) => c.id === action.payload.activeColumn
+      );
+      const targetCard = targetColumn.cards.find(
+        (card) => card.id === action.payload.cardId
+      );
+      const cardIndex = targetColumn.cards.indexOf(targetCard);
+      targetColumn.cards.splice(cardIndex, 1);
+      const nextColumn = state.find((col) => col.id === action.payload.nextCol);
+      nextColumn.cards.push(targetCard);
+    },
+    editCardTitle: (state, action) => {
+      const targetColumn = state.find(
+        (col) => col.id === action.payload.col.id
+      );
+      const targetCard = targetColumn.cards.find(
+        (card) => card.id === action.payload.cardId
+      );
+      const cardIndex = targetColumn.cards.indexOf(targetCard);
+      const columnIndex = state.indexOf(targetColumn);
+      state[columnIndex].cards[cardIndex].title = action.payload.cardTitle;
+    },
+    editCardDescription: (state, action) => {
+      const targetColumn = state.find(
+        (col) => col.id === action.payload.col.id
+      );
+      const targetCard = targetColumn.cards.find(
+        (card) => card.id === action.payload.cardId
+      );
+      const cardIndex = targetColumn.cards.indexOf(targetCard);
+      const columnIndex = state.indexOf(targetColumn);
+      state[columnIndex].cards[cardIndex].description =
+        action.payload.cardDescription;
+    },
   },
 });
 
@@ -128,6 +163,8 @@ export const {
   archiveCard,
   duplicateCard,
   switchCard,
+  editCardTitle,
+  editCardDescription,
 } = columnsSlice.actions;
 
 export default columnsSlice.reducer;

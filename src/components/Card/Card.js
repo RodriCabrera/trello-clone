@@ -10,7 +10,7 @@ import {
 import { useDrag } from "react-dnd";
 import OptionsDropdown from "../OptionsDropdown";
 
-const Card = ({ title, cardId, columnId }) => {
+const Card = ({ title, cardId, col }) => {
   const [showModal, setShowModal] = React.useState(false);
   const [showDrop, setShowDrop] = React.useState(false);
   const dispatch = useDispatch();
@@ -21,7 +21,13 @@ const Card = ({ title, cardId, columnId }) => {
     end: (item, monitor) => {
       const dropResult = monitor.getDropResult();
       if (item && dropResult) {
-        dispatch(switchCard({ cardId, nextCol: dropResult.columnId }));
+        dispatch(
+          switchCard({
+            cardId,
+            nextCol: dropResult.columnId,
+            activeColumn: col.id,
+          })
+        );
       }
     },
     collect: (monitor) => ({
@@ -41,13 +47,13 @@ const Card = ({ title, cardId, columnId }) => {
 
   const handleArchive = (e) => {
     e.stopPropagation();
-    dispatch(archiveCard({ cardId, columnId }));
+    dispatch(archiveCard({ cardId, columnId: col.id }));
   };
 
   const handleDuplicate = (e) => {
     e.stopPropagation();
     setShowDrop(false);
-    dispatch(duplicateCard({ cardId, columnId }));
+    dispatch(duplicateCard({ cardId, columnId: col.id }));
   };
   return (
     <div ref={drag} style={{ opacity: opacity }}>
@@ -67,6 +73,7 @@ const Card = ({ title, cardId, columnId }) => {
         title={title}
         show={showModal}
         onClose={closeModal}
+        col={col}
       />
     </div>
   );

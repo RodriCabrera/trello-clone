@@ -23,7 +23,7 @@ const Board = () => {
                 <Card
                   key={card.id}
                   cardId={card.id}
-                  columnId={col.id}
+                  col={col}
                   title={card.title}
                 />
               ))}
