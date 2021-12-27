@@ -82,8 +82,9 @@ export const columnsSlice = createSlice({
     duplicateColumn: (state, action) => {
       const targetColumn = state.find((c) => c.id === action.payload);
       const newColumn = Object.assign({}, targetColumn, {
-        id: state.length + 1,
+        id: uuid(),
       });
+      // Al duplicar la columna hay que generar distintos ids para las cards duplicadas
       return [...state, newColumn];
     },
     // CARD ACTIONS
