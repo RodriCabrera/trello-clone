@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import columnsReducer from "../slices/columnsSlice";
-import cardsReducer from "../slices/cardsSlice";
 import {
   persistStore,
   persistReducer,
@@ -17,7 +16,6 @@ import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
   columns: columnsReducer,
-  cards: cardsReducer,
 });
 const persistConfig = {
   key: "root",
