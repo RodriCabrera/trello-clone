@@ -7,8 +7,6 @@ import Card from "../Card";
 
 const Board = () => {
   const columns = useSelector((state) => state.columns);
-  const cards = useSelector((state) => state.cards);
-  console.log("CARDS", cards);
   console.log("COLUMNS", columns);
 
   return (
