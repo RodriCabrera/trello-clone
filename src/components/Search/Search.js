@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useSearchFilter } from "../../hooks/useSearchFilter";
 import {
   SearchInput,
   SearchIcon,
@@ -7,20 +7,18 @@ import {
 } from "./Search.styles";
 
 const Search = () => {
-  const [searchValue, setSearchValue] = useState("");
+  const { searchFilter, setSearchFilter } = useSearchFilter();
   const handleChange = (e) => {
-    setSearchValue(e.target.value);
+    setSearchFilter(e.target.value);
   };
-
-  useEffect(() => {}, [searchValue]);
-
+  console.log(searchFilter);
   return (
     <Container>
       <IconWrapper>
         <SearchIcon />
       </IconWrapper>
       <SearchInput
-        value={searchValue}
+        value={searchFilter}
         onChange={handleChange}
         placeholder="Search"
       />

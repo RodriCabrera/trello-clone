@@ -4,14 +4,12 @@ export const SearchFilterContext = createContext();
 
 export const SearchFilterProvider = ({ children }) => {
   const [searchFilter, setSearchFilter] = useState("");
-
+  const data = {
+    searchFilter,
+    setSearchFilter,
+  };
   return (
-    <SearchFilterContext.Provider
-      value={{
-        searchFilter,
-        setSearchFilter,
-      }}
-    >
+    <SearchFilterContext.Provider value={data}>
       {children}
     </SearchFilterContext.Provider>
   );

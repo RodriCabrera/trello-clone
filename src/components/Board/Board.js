@@ -8,9 +8,7 @@ import { useSearchFilter } from "../../hooks/useSearchFilter";
 
 const Board = () => {
   const columns = useSelector((state) => state.board.columns);
-  console.log("COLUMNS", columns);
-  const filter = useSearchFilter();
-  console.log(filter);
+  const { searchFilter } = useSearchFilter();
   return (
     <Container>
       {columns
@@ -18,7 +16,9 @@ const Board = () => {
         .map((col) => (
           <Column key={col.id} title={col.title} columnId={col.id}>
             {col.cards
-              .filter((card) => card.isActive)
+              .filter(
+                (card) => card.isActive && card.title.includes(searchFilter)
+              )
               .map((card) => (
                 <Card
                   key={card.id}
