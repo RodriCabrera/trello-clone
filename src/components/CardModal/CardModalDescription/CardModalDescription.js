@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { editCardDescription } from "../../../slices/columnsSlice";
+import { editCardDescription } from "../../../slices/boardSlice";
 import {
   Body,
   Button,
@@ -13,7 +13,7 @@ import {
 
 const CardModalDescription = ({ cardId, col }) => {
   const targetCard = col.cards.find((card) => card.id === cardId);
-  const description = targetCard;
+  const description = targetCard.description;
 
   const dispatch = useDispatch();
   const [cardDescription, setCardDescription] = React.useState(description);

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { editCardTitle } from "../../../slices/columnsSlice";
+import { editCardTitle } from "../../../slices/boardSlice";
 import { Title } from "./CardModalTitle.styles";
 
 const CardModalTitle = ({ title, cardId, col }) => {

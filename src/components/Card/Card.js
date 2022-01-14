@@ -6,7 +6,7 @@ import {
   archiveCard,
   duplicateCard,
   switchCard,
-} from "../../slices/columnsSlice";
+} from "../../slices/boardSlice";
 import { useDrag } from "react-dnd";
 import OptionsDropdown from "../OptionsDropdown";
 

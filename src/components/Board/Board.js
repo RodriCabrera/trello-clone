@@ -4,11 +4,13 @@ import Column from "../Column";
 import AddColumn from "../AddColumn";
 import { useSelector } from "react-redux";
 import Card from "../Card";
+import { useSearchFilter } from "../../hooks/useSearchFilter";
 
 const Board = () => {
-  const columns = useSelector((state) => state.columns);
+  const columns = useSelector((state) => state.board.columns);
   console.log("COLUMNS", columns);
-
+  const filter = useSearchFilter();
+  console.log(filter);
   return (
     <Container>
       {columns

@@ -13,11 +13,10 @@ import {
 import { useDrop } from "react-dnd";
 import OptionsDropdown from "../OptionsDropdown";
 import { useDispatch, useSelector } from "react-redux";
-import { archiveColumn, duplicateColumn } from "../../slices/columnsSlice";
+import { archiveColumn, duplicateColumn } from "../../slices/boardSlice";
 
 const Column = ({ title, children, columnId }) => {
   const [showDrop, setShowDrop] = React.useState(false);
-
   const [{ isOver, getItem }, drop] = useDrop(() => ({
     accept: "CARD",
     drop: () => ({ columnId }),
@@ -29,7 +28,7 @@ const Column = ({ title, children, columnId }) => {
 
   //---Mostrar condicionalmente el placeholder al hacer drag+hover
   const cardId = getItem?.cardId;
-  const columns = useSelector((state) => state.columns);
+  const columns = useSelector((state) => state.board.columns);
   const targetColumn = columns.find((col) => col.id === columnId);
   const isCardInCol = () =>
     targetColumn.cards.some((card) => card.id === cardId);
